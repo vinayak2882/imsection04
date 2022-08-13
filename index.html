@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #Maindiv{
+            border: 1px solid black;
+            width: 400px;
+            height: 690px;
+            margin: auto;
+            background-color: darkslategray
+        }
+        #Topdiv {
+           
+            background-color: teal;
+            color: white;
+            width: 398px;
+            height: 70px;
+            margin: auto; 
+            display: flex;
+        column-gap: 100px;
+        display: grid;
+            grid-template-columns: repeat(3,1fr);
+        }
+        #voils{
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+        }
+        #voils > div{
+           border: 1px solid blueviolet;
+           width: 70px;
+           height: 100px;
+           column-gap: 10px;
+           margin: auto;
+           text-align: center;
+          margin-top: 10px;
+          background-color: white;
+        }
+        #Alpa{
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+        }
+        #Alpa > div{
+           border: 1px solid pink;
+           width: 70px;
+           height: 100px;
+           column-gap: 10px;
+           row-gap: 10px;
+           margin: auto;
+           text-align: center;
+           margin-top: 10px;
+           background-color: white;
+        }
+        #midldiv{
+            background-color: darkslategray;
+            padding-bottom: 10px;
+        }
+        #Bottomdiv{
+            background-color: teal;
+            color: white;
+            width: 398px;
+            height: 70px;
+            margin: auto; 
+            display: flex;
+        column-gap: 100px;
+        display: grid;
+            grid-template-columns: repeat(3,1fr);
+        }
+       
+    </style>
+</head>
+<body>
+
+    <div id="container">
+
+        <div id="Maindiv">
+            <div id="Topdiv">
+                <h2 id="Score" style="margin-left: 20px;"></h2>
+                <h1 id="demo">0</h1>
+                <div style="display: flex; gap: 15px;">
+                    <h1 id="LeftTils">0</h1>
+                    <p style="margin-right: 20px;">Tiles Left</p>
+                </div>
+
+            </div>
+           <div id="midldiv">
+            <div id="voils"></div>
+            <div id="Alpa"></div>
+           </div>
+<div id="Bottomdiv"></div>
+
+        </div>
+
+    </div>
+
+    
+</body>
+</html>
+<script>
+   var voielsarr=[];
+
+   function randomValue(min, max){
+    return Math.floor(Math.random()*(max- min +1))+min
+   }
+   var Score=0;
+
+   let vovel = "AEIOU"
+
+const voilsdiv=document.getElementById("voils")
+const Alpadiv=document.getElementById("Alpa")
+
+   for(var i=0; i<5; i++){
+    let div= document.createElement("div")
+    let H1= document.createElement("h1")
+    let p= document.createElement("p")
+    let num = randomValue(1,4);
+    Score+=num
+    H1.innerHTML=vovel[i];
+    p.innerHTML=num
+    div.append(H1,p)
+    voilsdiv.append(div)
+
+    // console.log(vovel[i])
+    voielsarr.push([vovel[i],num])
+   }
+//    console.log(voielsarr)
+
+   let Alpaha=[];
+   var result=''
+
+
+
+   let letters=["B","C","D","F","G","H","I","J","K","L","M","N","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    const num01 = new Set();
+    while(num01.size !== 15) {
+
+  
+      let M=(Math.floor(Math.random() * 15) + 1);
+        num01.add(letters[M])
+  
+   }
+
+let Arr1=[...num01]
+
+
+     let arr=[];
+   
+     for(let j=0;j<Arr1.length;j++)
+     {
+  
+        let ans=[];
+       
+        ans.push(Arr1[j])
+
+        arr.push(ans)
+
+     }
+
+     console.log("Arr1", Arr1)
+
+   
+   
+
+
+
+   for(var j=1; j<15; j++){
+    let div= document.createElement("div")
+    let H1= document.createElement("h1")
+    let p= document.createElement("p")
+    let num01 = randomValue(1,4);
+    Score+=num01
+   
+    console.log(Arr1[j]+" "+num01)
+
+    Alpaha.push([Arr1[j],num01])
+    H1.innerHTML=Arr1[j];
+    p.innerHTML=num01
+    div.append(H1,p)
+    Alpadiv.append(div)
+   }
+   console.log("score",Score)
+//    console.log("Alpaha", Alpaha)
+
+let Scor=document.getElementById("Score")
+Scor.append(Score)
+
+
+
+
+// Timer Start
+
+var LeftTM = 99;
+var CountTimer = setInterval(function(){
+  if(LeftTM <= 0){
+    clearInterval(CountTimer);
+    document.getElementById("demo").innerHTML = "Finished";
+  } else {
+    document.getElementById("demo").innerHTML = LeftTM;
+  }
+  LeftTM -= 1;
+}, 1000);
+
+</script>
+
+
+   
